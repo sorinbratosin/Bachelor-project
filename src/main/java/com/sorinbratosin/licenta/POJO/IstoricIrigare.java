@@ -20,8 +20,8 @@ public class IstoricIrigare {
 
     @ManyToOne
     @JoinColumn(name = "id_senzor")
-    private DateSenzori dateSenzori;
+    private DateSenzori idSenzor;
 
-    @Column(name = "data_adaugarii")
-    private LocalDateTime dataAdaugarii;
+    @Column(name = "data_irigare")
+    private LocalDateTime dataIrigare;
 }

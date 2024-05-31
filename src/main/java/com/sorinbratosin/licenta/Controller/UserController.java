@@ -1,7 +1,6 @@
 package com.sorinbratosin.licenta.Controller;
 
 import com.sorinbratosin.licenta.POJO.User;
-import com.sorinbratosin.licenta.Security.CredentialsAreNotValidException;
 import com.sorinbratosin.licenta.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -16,7 +16,7 @@ public class IstoricIrigareService {
         istoricIrigareDAO.save(istoricIrigare);
     }
 
-    IstoricIrigare latestIstoricIrigare() {
+    public IstoricIrigare latestIstoricIrigare() {
         return istoricIrigareDAO.theMostRecentIstoricIrigare();
     }
 
