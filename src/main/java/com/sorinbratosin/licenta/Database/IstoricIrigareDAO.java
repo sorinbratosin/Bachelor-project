@@ -10,4 +10,6 @@ public interface IstoricIrigareDAO extends JpaRepository<IstoricIrigare, Long> {
 
     @Query(value = "SELECT * FROM istoric_irigare ORDER BY id DESC LIMIT 1", nativeQuery = true)
     IstoricIrigare theMostRecentIstoricIrigare();
+
+    IstoricIrigare findFirstByUserIdOrderByDataIrigareDesc(Long userId);
 }

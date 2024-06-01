@@ -10,4 +10,6 @@ public interface DateSenzoriDAO extends JpaRepository<DateSenzori, Long> {
 
     @Query(value = "SELECT * FROM date_senzori ORDER BY id DESC LIMIT 1", nativeQuery = true)
     DateSenzori theMostRecentDateSenzori();
+
+    DateSenzori findFirstByUserIdOrderByDataAdaugariiDesc(Long userId);
 }
