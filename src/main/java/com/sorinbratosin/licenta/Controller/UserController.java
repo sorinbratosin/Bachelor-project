@@ -1,12 +1,10 @@
 package com.sorinbratosin.licenta.Controller;
-
 import com.sorinbratosin.licenta.POJO.User;
 import com.sorinbratosin.licenta.Service.JwtService;
 import com.sorinbratosin.licenta.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +31,6 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody User user) {
         User authenticatedUser = userService.loginUser(user.getEmail(), user.getPassword());
         if (authenticatedUser != null) {
-            // Creează un obiect de răspuns care conține tokenul și userId
             Map<String, Object> response = new HashMap<>();
             response.put("message", "User logged in successfully");
             response.put("userId", authenticatedUser.getId());

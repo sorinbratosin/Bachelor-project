@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 public class HomeDataDTO {
     private String lastName;
     private LocalDateTime dataIrigare;
-    private double umiditate;
+    private int umiditate;
     private LocalDateTime dataAdaugarii;
 }

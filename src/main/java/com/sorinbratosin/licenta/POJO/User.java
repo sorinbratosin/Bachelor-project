@@ -1,8 +1,8 @@
 package com.sorinbratosin.licenta.POJO;
-
-
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,5 +14,8 @@ public class User {
     private long id;
 
     private String email,lastName,firstName,password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Device> devices;
 }
 

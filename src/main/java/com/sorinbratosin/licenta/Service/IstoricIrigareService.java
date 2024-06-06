@@ -1,5 +1,4 @@
 package com.sorinbratosin.licenta.Service;
-
 import com.sorinbratosin.licenta.Database.IstoricIrigareDAO;
 import com.sorinbratosin.licenta.POJO.IstoricIrigare;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +10,7 @@ public class IstoricIrigareService {
     @Autowired
     IstoricIrigareDAO istoricIrigareDAO;
 
-
     public void saveIstoricIrigare(IstoricIrigare istoricIrigare) {
         istoricIrigareDAO.save(istoricIrigare);
     }
-
-    public IstoricIrigare latestIstoricIrigare() {
-        return istoricIrigareDAO.theMostRecentIstoricIrigare();
-    }
-
 }

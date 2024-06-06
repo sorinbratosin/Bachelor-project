@@ -1,14 +1,14 @@
 package com.sorinbratosin.licenta.Service;
-
 import com.sorinbratosin.licenta.POJO.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
-
 import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 
 @Service
@@ -24,7 +24,8 @@ public class JwtService {
 
     @PostConstruct
     public void init() {
-        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+        byte[] decodedKey = Base64.getDecoder().decode(secretKey);
+        this.key = Keys.hmacShaKeyFor(decodedKey);
     }
 
     public String generateToken(User user) {
@@ -36,7 +37,26 @@ public class JwtService {
                 .claim("userId", user.getId())
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(key)
+                .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
+    }
+
+    public String getUsernameFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.getSubject();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -1,6 +1,4 @@
 package com.sorinbratosin.licenta.Controller;
-
-
 import com.sorinbratosin.licenta.POJO.HomeDataDTO;
 import com.sorinbratosin.licenta.Service.HomeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +18,4 @@ public class MainMenuController {
     public HomeDataDTO getHomeData(@PathVariable Long userId) {
         return homeDataService.getHomeData(userId);
     }
-
 }

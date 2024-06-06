@@ -1,5 +1,4 @@
 package com.sorinbratosin.licenta.Service;
-
 import com.sorinbratosin.licenta.Database.UserDAO;
 import com.sorinbratosin.licenta.POJO.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,11 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserService(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public User registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -45,5 +49,9 @@ public class UserService implements UserDetailsService {
                 .accountLocked(false)
                 .credentialsExpired(false)
                 .build();
+    }
+
+    public User findById(long id) {
+        return userDAO.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

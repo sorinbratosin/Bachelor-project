@@ -1,8 +1,6 @@
 package com.sorinbratosin.licenta.POJO;
-
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -14,7 +12,11 @@ public class DateSenzori {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private double temperatura,umiditate;
+    private int umiditate;
+
+    @ManyToOne
+    @JoinColumn(name = "id_device")
+    private Device device;
 
     @Column(name = "data_adaugarii")
     private LocalDateTime dataAdaugarii;

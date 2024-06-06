@@ -1,5 +1,4 @@
 package com.sorinbratosin.licenta.Service;
-
 import com.sorinbratosin.licenta.Database.DateSenzoriDAO;
 import com.sorinbratosin.licenta.POJO.DateSenzori;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ public class DateSenzoriService {
         dateSenzoriDAO.save(dateSenzori);
     }
 
-    public DateSenzori latestDateSenzori() {
-        return dateSenzoriDAO.theMostRecentDateSenzori();
+    public DateSenzori findByUserId(long userId) {
+        return dateSenzoriDAO.findByUserId(userId);
     }
 }
