@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 public interface DateSenzoriDAO extends JpaRepository<DateSenzori, Long> {
 
     DateSenzori findFirstByUserIdOrderByDataAdaugariiDesc(Long userId);
-
-    DateSenzori findByUserId(Long userId);
 }

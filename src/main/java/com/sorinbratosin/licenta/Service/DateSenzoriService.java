@@ -13,8 +13,4 @@ public class DateSenzoriService {
     public void saveDateSenzori(DateSenzori dateSenzori) {
         dateSenzoriDAO.save(dateSenzori);
     }
-
-    public DateSenzori findByUserId(long userId) {
-        return dateSenzoriDAO.findByUserId(userId);
-    }
 }

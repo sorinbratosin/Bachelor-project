@@ -83,7 +83,6 @@ public class DateSenzorController {
         } else {
             status = "S-au salvat datele";
         }
-
         return status;
     }
 }

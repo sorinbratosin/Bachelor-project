@@ -35,6 +35,10 @@ public class UserService implements UserDetailsService {
         return null;
     }
 
+    public User findById(long id) {
+        return userDAO.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userDAO.findByEmail(email);
@@ -49,9 +53,5 @@ public class UserService implements UserDetailsService {
                 .accountLocked(false)
                 .credentialsExpired(false)
                 .build();
-    }
-
-    public User findById(long id) {
-        return userDAO.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }
