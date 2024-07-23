@@ -2,10 +2,10 @@ This project is an IoT-based web application designed for automating and monitor
 
 **Technologies Used**
 
-Frontend: React, TypeScript, Axios, Material-UI
-Backend: Spring Boot, Java, Spring Security, JWT
-Database: MySQL
-Hardware: C++ for ESP32 in Arduino
+Frontend: React, TypeScript, Axios, Material-UI  
+Backend: Spring Boot, Java, Spring Security, JWT  
+Database: MySQL  
+Hardware: C++ for ESP32 in Arduino  
 
 **Architecture**
 
