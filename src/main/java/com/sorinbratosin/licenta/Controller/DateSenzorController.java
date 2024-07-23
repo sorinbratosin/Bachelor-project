@@ -15,6 +15,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Map;
 
 @Controller
@@ -67,7 +69,7 @@ public class DateSenzorController {
         //adaugare date senzor umiditate
         DateSenzori dateSenzori = new DateSenzori();
         dateSenzori.setUmiditate(umiditate);
-        dateSenzori.setDataAdaugarii(LocalDateTime.now());
+        dateSenzori.setDataAdaugarii(ZonedDateTime.now(ZoneId.of("Europe/Bucharest")).toLocalDateTime());
         dateSenzori.setDevice(device);
         dateSenzori.setUser(user);
         dateSenzoriService.saveDateSenzori(dateSenzori);
@@ -75,7 +77,7 @@ public class DateSenzorController {
         //salvare irigare
         if(aFostIrigat) {
             IstoricIrigare istoricIrigare = new IstoricIrigare();
-            istoricIrigare.setDataIrigare(LocalDateTime.now());
+            istoricIrigare.setDataIrigare(ZonedDateTime.now(ZoneId.of("Europe/Bucharest")).toLocalDateTime());
             istoricIrigare.setUser(user);
             istoricIrigare.setIdSenzor(dateSenzori);
             istoricIrigareService.saveIstoricIrigare(istoricIrigare);

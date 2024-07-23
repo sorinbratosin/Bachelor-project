@@ -26,14 +26,15 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/register", "/api/login", "/postHumidity").permitAll()
+                        .requestMatchers("/api/register", "/api/login").permitAll()
+                        .requestMatchers("/postHumidity").hasAuthority("DEVICE")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class) // JWT filter este aplicat primul pentru utilizare generala
+                .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class); // API Key filter este aplicat dupa pentru a nu interfera cu autentificarea
 
         return http.build();
     }
