@@ -9,10 +9,11 @@ This project is an IoT-based web application designed for automating and monitor
 
 **Architecture**
 
-The application architecture consists of three main layers:  
+The application architecture consists of four main layers:  
 •	Hardware: The IoT device collects and transmits sensor data and the irrigation status to the backend  
 •	Backend: Implemented using Spring Boot, handling API requests, business logic, and database interactions  
-•	Frontend: Built with React, providing a user-friendly interface   
+•	Frontend: Built with React, providing a user-friendly interface
+•	Database: Stores the sensor data, user information, and irrigation status
 
 **Hardware Setup**
 
@@ -33,7 +34,7 @@ _Authentication_
 •	POST /api/register: User registration  
 
 _Sensor Data_  
-•	POST /api/postHumidity: Receives humidity data and irrigation status from the IoT device. Requires a "deviceIOT" header and key for authentication  
+•	POST /api/postHumidity: Receives humidity data and irrigation status from the IoT device. Requires a "deviceIOT" header and valid key  
 
 _User Data_  
 •	GET /api/date-home/{userId}: Retrieves user-specific data, the latest irrigation time and humidity levels. Requires an "Authorization" header and JWT token starting with "Bearer"
