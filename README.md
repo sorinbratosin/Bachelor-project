@@ -13,7 +13,7 @@ The application architecture consists of four main layers:
 •	Hardware: The IoT device collects and transmits sensor data and the irrigation status to the backend  
 •	Backend: Implemented using Spring Boot, handling API requests, business logic, and database interactions  
 •	Frontend: Built with React, providing a user-friendly interface 
-•	Database: Stores the sensor data, user information, and irrigation status 
+•	Database: Stores the sensor data, user information, and irrigation status  
 
 **Hardware Setup**
 
